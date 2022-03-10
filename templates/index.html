@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <title> prédiciton de la qualité du vin</title>
+
+  </head>
+
+  <body>
+
+    <div>
+
+     <h1>API Documentation : prédiciton de la qualité du vin </h1>
+
+     <h2>Endpoints</h2>
+    </div>
+    <div>
+      <p>Ce point final vous permet de faire une prédiction de la qualité d'un vin, de 1 à 10,
+       en fonction de certains paramètres</p>.
+      <h2><b> Comment demander ce point de terminaison</b></h2>
+      <p>Vous devez demander ce point de terminaison en utilisant une méthode POST avec un contenu JSON.
+        Votre JSON doit contenir les valeurs, séparées par des virgules, des paramètres suivants</p>
+
+      <ul>
+        <li>Paramètre 1 : acidité fixe</li>
+        <li>Paramètre 2 : acidité volatile</li>
+        <li>Paramètre 3 : acide citrique</li>
+        <li>Parameter 4 : sucre résiduel</li>
+        <li>Paramètre 5 : chlorures</li>
+        <li>Paramètre 6 : dioxyde de soufre libre</li>
+        <li>Paramètre 7 : dioxyde de soufre total</li>
+        <li>Paramètre 8 : densité</li>
+        <li>Paramètre 9 : pH</li>
+        <li>Paramètre 10: sulfates</li>
+        <li>Paramètre 11: alcool</li>
+       </ul>
+      </div>
+
+      <div>
+         Exemple utilisant curl en localhost:<br>
+
+         curl -i -H "Content-Type: application/json" -X POST -d '{"input": [[7.0, 0.27, 0.36, 20.7, 0.045,
+          45.0, 170.0, 1.001, 3.0, 0.45, 8.8]]}' http://localhost:5000/predict <br>
+        <br>
+
+
+         Si vous utilisez l'application déployée dans Heroku:
+         curl -i -H "Content-Type: application/json" -X POST -d '{"input": [[7.0, 0.27, 0.36, 20.7, 0.045,
+         45.0, 170.0, 1.001, 3.0, 0.45, 8.8]]}' https://my-appvin-flask-app.herokuapp.com/
+
+
+       </div>
+        <div>
+          <div>
+            <p>
+          response = r Exemple utilisant des requêtes en localhost: <br>
+            import requests <br>
+        requests.post("http://127.0.0.1:5000/predict", json=
+        {"input": [[7.0, 0.27, 0.36, 20.7, 0.045, 45.0, 170.0, 1.001, 3.0, 0.45, 8.8]]}) <br>
+
+        response.json() <br>
+        </p>
+              </div>
+          </div>
+    <!--
+      Pour une future version de cette application, un formulaire sera proposé pour appeler l'API..
+          <form action="/predict" method="post" role="form">
+            <div class="form-group">
+
+
+          <label for="name">Input:</label>
+          <div>
+          <input type="text" class="form-control" name="input" placeholder="Enter here the list of values between brackets, like the example">
+        </div>
+          <button type="submit" class="btn btn-success" name="action-predict">Submit</button>
+    </form>
+    -->
+
+  </body>
+
+</html>
